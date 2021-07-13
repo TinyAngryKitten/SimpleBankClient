@@ -28,7 +28,7 @@ abstract class BankClient {
     abstract val clientId : String
     abstract val clientSecret : String
     abstract val userid : String
-    val basicAuth: String by lazy { getBase64AuthString(clientId, clientSecret) }
+    open val basicAuth: String by lazy { getBase64AuthString(clientId, clientSecret) }
 
     abstract val accountsPath : String
 
@@ -67,28 +67,28 @@ abstract class BankClient {
         body = "grant_type=client_credentials".toByteArray()
     }
 
-    open suspend fun listAccounts(userId: String, token: String): AccountResponse {
+    open suspend fun listAccounts(token: String): AccountResponse {
         client.use { client ->
             return client.request(baseApiUrl+accountsPath) {
                 header("Accept", "application/json")
                 header("Authorization", "Bearer $token")
-                header("customerId", userId)
+                header("customerId", userid)
             }
         }
     }
 
-    open suspend fun listAccountTransfers(userId: String, token: String): AccountResponse {
+    open suspend fun fetchAccount(accountId : String, token: String): Account {
         client.use { client ->
-            return client.request(baseApiUrl+accountsPath) {
+            return client.request("$baseApiUrl$accountsPath$accountId") {
                 header("Accept", "application/json")
                 header("Authorization", "Bearer $token")
-                header("customerId", userId)
+                header("customerId", userid)
             }
         }
     }
 
-    @OptIn(InternalAPI::class)
-    open fun getBase64AuthString(clientId: String, secret: String): String =
+
+    open fun getBase64AuthString(clientId: String, secret: String): String = ""
         String(
             Base64.encoder.encode(
                 "${clientId.encodeURLParameter(true)}:${secret.encodeURLParameter(true)}"

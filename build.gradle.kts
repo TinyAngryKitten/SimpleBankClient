@@ -58,7 +58,11 @@ kotlin {
             }
         }
         val jvmTest by getting
-        val jsMain by getting
+        val jsMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-js:$ktor_version")
+            }
+        }
         val jsTest by getting
         val nativeMain by getting
         val nativeTest by getting

@@ -25,7 +25,7 @@ kotlin {
         compilations["main"].packageJson {
             customField("repository", "git://github.com/tinyangrykitten/SimpleBankClient.git")
             private = false
-            name = "@TinyAngryKitten/SimpleBankClient"
+            name = "@tinyangrykitten/simplebankclient"
         }
         browser {
             commonWebpackConfig {

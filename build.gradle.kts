@@ -21,6 +21,7 @@ kotlin {
         }
     }
     js(LEGACY) {
+        useCommonJs()
         binaries.executable()
         moduleName = "SimpleBankClient"
         compilations["main"].packageJson {
@@ -28,13 +29,7 @@ kotlin {
             private = false
             name = "@tinyangrykitten/simplebankclient"
         }
-        browser {
-            webpackTask {
-                output.libraryTarget = "commonjs2"
-            }
-            commonWebpackConfig {
-                cssSupport.enabled = true
-            }
+        nodejs {
         }
     }
     

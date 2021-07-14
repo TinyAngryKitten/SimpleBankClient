@@ -88,7 +88,7 @@ abstract class BankClient {
     }
 
 
-    open fun getBase64AuthString(clientId: String, secret: String): String = ""
+    open fun getBase64AuthString(clientId: String, secret: String): String =
         String(
             Base64.encoder.encode(
                 "${clientId.encodeURLParameter(true)}:${secret.encodeURLParameter(true)}"

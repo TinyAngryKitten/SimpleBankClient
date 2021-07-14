@@ -68,6 +68,13 @@ npmPublishing {
         repository("githubnpm") {
             registry = uri("https://npm.pkg.github.com")
             authToken = System.getenv("auth")
+            organization="tinyangrykitten"
+        }
+    }
+
+    publications {
+        publication("gitNpmPublication") {
+            moduleName="simplebankclient"
         }
     }
 }

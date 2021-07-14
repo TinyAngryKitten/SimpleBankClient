@@ -26,5 +26,5 @@ jobs:
           distribution: 'adopt'
       - name: build
         env:
-          auth: ${{ secrets.PACKAGE_TOKEN }}
-        run: ./gradlew assembleGitNpmPublication packGitNpmPublication publishGitNpmPublication
+          auth: ${{ secrets.NPM_TOKEN }}
+        run: ./gradlew publishClientNpmPublicationToNpm

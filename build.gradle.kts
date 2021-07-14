@@ -65,16 +65,15 @@ kotlin {
 
 npmPublishing {
     repositories {
-        repository("githubnpm") {
-            registry = uri("https://npm.pkg.github.com")
-            authToken = System.getenv("auth")
-            organization="tinyangrykitten"
+        repository("npm") {
+            authToken = System.getenv("NPM_TOKEN")
+            registry = uri("https://registry.npmjs.org")
         }
     }
 
     publications {
-        publication("git") {
-            moduleName="simplebankclient"
+        publication("client") {
+            moduleName="tinyangrykitten-simplebankclient"
         }
     }
 }

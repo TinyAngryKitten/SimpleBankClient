@@ -6,7 +6,7 @@ plugins {
 
 val ktor_version = "1.5.4"
 group = "tiny.angry.kitten"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()

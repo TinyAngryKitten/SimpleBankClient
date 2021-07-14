@@ -1,4 +1,5 @@
 plugins {
+    id("dev.petuska.npm.publish") version "2.0.3"
     kotlin("multiplatform") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.20"
 }
@@ -20,17 +21,16 @@ kotlin {
             useJUnit()
         }
     }
-    js(LEGACY) {
+    js(IR) {
+        binaries.library()
         useCommonJs()
-        binaries.executable()
         moduleName = "SimpleBankClient"
         compilations["main"].packageJson {
             customField("repository", "git://github.com/tinyangrykitten/SimpleBankClient.git")
             private = false
             name = "@tinyangrykitten/simplebankclient"
         }
-        nodejs {
-        }
+        nodejs {}
     }
     
     sourceSets {
@@ -60,5 +60,14 @@ kotlin {
             }
         }
         val jsTest by getting
+    }
+}
+
+npmPublishing {
+    repositories {
+        repository("githubnpm") {
+            registry = uri("https://npm.pkg.github.com")
+            authToken = System.getenv("AUTH")
+        }
     }
 }

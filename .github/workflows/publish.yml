@@ -25,9 +25,6 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
       - name: build
-        run: ./gradlew assemble
-      - uses: JS-DevTools/npm-publish@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          registry: https://npm.pkg.github.com
-          package: ./build/js/packages/SimpleBankClient/package.json
+          auth: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew publish

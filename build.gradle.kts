@@ -29,6 +29,9 @@ kotlin {
             name = "@tinyangrykitten/simplebankclient"
         }
         browser {
+            webpackTask {
+                output.libraryTarget = "commonjs2"
+            }
             commonWebpackConfig {
                 cssSupport.enabled = true
             }

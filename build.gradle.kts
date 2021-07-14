@@ -73,7 +73,7 @@ npmPublishing {
     }
 
     publications {
-        publication("gitNpmPublication") {
+        publication("git") {
             moduleName="simplebankclient"
         }
     }

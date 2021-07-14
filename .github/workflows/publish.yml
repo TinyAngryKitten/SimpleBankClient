@@ -27,4 +27,4 @@ jobs:
       - name: build
         env:
           auth: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew assemble publish
+        run: ./gradlew assembleGitNpmPublication packGitNpmPublication publishGitNpmPublication

@@ -21,6 +21,7 @@ kotlin {
         }
     }
     js(LEGACY) {
+        binaries.executable()
         moduleName = "SimpleBankClient"
         compilations["main"].packageJson {
             customField("repository", "git://github.com/tinyangrykitten/SimpleBankClient.git")

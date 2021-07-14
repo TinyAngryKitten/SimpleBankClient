@@ -67,7 +67,7 @@ npmPublishing {
     repositories {
         repository("githubnpm") {
             registry = uri("https://npm.pkg.github.com")
-            authToken = System.getenv("AUTH")
+            authToken = System.getenv("auth")
         }
     }
 }

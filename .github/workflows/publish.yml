@@ -25,6 +25,6 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
       - name: build
-        with:
+        env:
           auth: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew publish

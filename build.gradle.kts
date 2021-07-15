@@ -6,7 +6,7 @@ plugins {
 
 val ktor_version = "1.5.4"
 group = "tiny.angry.kitten"
-version = "1.0.0"
+version = "1.0.${System.getenv("RUN_NUMBER") ?: 4}"
 
 repositories {
     mavenCentral()
@@ -60,20 +60,5 @@ kotlin {
             }
         }
         val jsTest by getting
-    }
-}
-
-npmPublishing {
-    repositories {
-        repository("npm") {
-            authToken = System.getenv("NPM_TOKEN")
-            registry = uri("https://registry.npmjs.org")
-        }
-    }
-
-    publications {
-        publication("client") {
-            moduleName="tinyangrykitten-simplebankclient"
-        }
     }
 }

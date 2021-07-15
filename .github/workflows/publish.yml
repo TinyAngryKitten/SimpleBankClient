@@ -25,6 +25,11 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: build
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: ./gradlew publish
+        env: 
+          RUN_NUMBER: ${{ github.run_number }}
+        run: ./gradlew assemble
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - working-directory: build/js/SimpleBankClient
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}

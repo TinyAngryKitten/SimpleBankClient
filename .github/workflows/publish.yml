@@ -31,8 +31,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: setup NPM authentication
-        run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - name: Publish
-        run: npm publish
-        working-directory: $GITHUB_WORKSPACE/build/js/packages/SimpleBankClient
+        run: |
+          cd build
+          cd js
+          cd packages
+          cd SimpleBankClient
+          npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+          npm publish

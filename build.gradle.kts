@@ -28,7 +28,7 @@ kotlin {
         compilations["main"].packageJson {
             customField("repository", "git://github.com/tinyangrykitten/SimpleBankClient.git")
             private = false
-            name = "@tinyangrykitten/simplebankclient"
+            name = "tinyangrykitten-simplebankclient"
         }
         nodejs {}
     }

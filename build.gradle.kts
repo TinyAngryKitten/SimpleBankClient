@@ -1,12 +1,12 @@
 plugins {
-    id("dev.petuska.npm.publish") version "2.0.3"
     kotlin("multiplatform") version "1.5.20"
     kotlin("plugin.serialization") version "1.5.20"
+    id("maven-publish")
 }
 
 val ktor_version = "1.5.4"
 group = "tiny.angry.kitten"
-version = "1.0.${System.getenv("RUN_NUMBER") ?: 4}"
+version = "1.0.${System.getenv("RUN_NUMBER") ?: 10}"
 
 repositories {
     mavenCentral()
@@ -60,5 +60,26 @@ kotlin {
             }
         }
         val jsTest by getting
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/TinyAngryKitten/SimpleBankClient")
+            credentials {
+                username = "TinyAngryKitten"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "tiny.angry.kitten"
+            artifactId = "simplebankclient"
+            version = "1.0.${System.getenv("RUN_NUMBER") ?: 4}"
+        }
     }
 }

@@ -1,22 +1,15 @@
 import api_client.SBankenBankClient
 import kotlinx.coroutines.runBlocking
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import model.Transfer
 import kotlin.test.Test
+import kotlin.time.days
 
-val userId = ""
-val clientId = ""
-val clientSecret = ""
 
 class Test {
     @Test
     fun test() {
-        runBlocking {
-            val client = SBankenBankClient(userId,clientId,clientSecret)
-            val token = client.getAccessToken(clientId, clientSecret)
-            val accounts = client.listAccounts(token!!.access_token)
-            val account = client.fetchAccount("D37446FB027A0252200ECA750A95337F", token.access_token)
-            println(token)
-            println(accounts)
-            println(account)
-        }
+
     }
 }

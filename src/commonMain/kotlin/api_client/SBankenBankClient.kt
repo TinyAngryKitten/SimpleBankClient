@@ -9,4 +9,7 @@ class SBankenBankClient(
     override val baseApiUrl: String = "https://publicapi.sbanken.no/apibeta/api/v2/"
 
     override val accountsPath: String = "Accounts/"
+    override val transactionPath: String = "Transactions/"
+    override val transactionArchivePath: String = "Transactions/archive/"
+    override val transferPath: String = "Transfers/"
 }
